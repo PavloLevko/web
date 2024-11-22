@@ -1,11 +1,146 @@
 <!DOCTYPE html>
-<html lang="ua">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title  %} {% endblock %}</title>
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .navbar-brand img {
+            width: 40px;
+            height: 40px;
+        }
+        .carousel-item img {
+            height: 400px;
+            object-fit: cover;
+        }
+        footer {
+            background-color: #212529;
+            color: white;
+            padding: 10px 0;
+        }
+    </style>
 </head>
 <body>
- {% block body  %} {% endblock %}
+<header>
+    <!-- Навігаційна панель -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Logo">
+             <h3 class="text-white mb-0">ProgLab</h3>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'home' %}">Головна</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">Про нас</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Контакти</a>
+                    </li>
+                    {% if not user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline mx-2 custom-btn" href="{% url 'reg' %}">Зареєструватись</a>
+
+                        <style>
+                            .custom-btn {
+                                transition: background-color 0.3s, color 0.3s;
+                            }
+
+                            .custom-btn:hover {
+                                background-color: green;
+                                color: white;
+                            }
+                        </style>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-primary" href="{% url 'user' %}">Увійти</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline mx-2 custom-btn" href="{% url 'user' %}">Кабінет</a>
+
+                        <style>
+                            .custom-btn {
+                                transition: background-color 0.3s, color 0.3s;
+                            }
+
+                            .custom-btn:hover {
+                                background-color: green;
+                                color: white;
+                            }
+                        </style>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-danger" href="{% url 'exit' %}">Вийти</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Карусель -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://media.licdn.com/dms/image/v2/D4D12AQG_YSJ1kYwePg/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1656929678065?e=2147483647&v=beta&t=kblxaapNntIbdiPsc6_DOR69O5-OlUGAJEVknDHHy2Y"
+                     class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://cdn-cekmh.nitrocdn.com/SlrtebQxNZbUBkfXeRIcTgUmxZsOSldb/assets/images/optimized/rev-ee81cca/codoid.com/wp-content/uploads/2020/08/Splinter-–-A-Wrapper-Library-for-Selenium-with-Python-Banner-1.png"
+                     class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="http://old.coopertype.org/images/events/python-for-visual-designers-banner.png"
+                     class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Попередній</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Наступний</span>
+        </button>
+    </div>
+</header>
+
+<!-- Головний контент -->
+<main class="container py-4">
+    {% block body %}
+    <h1>Ласкаво просимо!</h1>
+    <p>Це приклад веб-сторінки на Django із Bootstrap.</p>
+    {% endblock %}
+</main>
+
+<!-- Футер -->
+<footer>
+    <div class="container text-center">
+        <p>&copy; 2024 ProgLab. Усі права захищені.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
