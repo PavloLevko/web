@@ -1,42 +1,21 @@
 {% extends 'web/base.html' %}
 
 {% block title %}
-Особистий кабінет
+Вхід в особистий кабінет
 {% endblock %}
 
 {% block body %}
-<div class="container mt-5 text-center">
-    <h1>Особистий кабінет</h1>
-
-      <h3 class="mt-4">Зараз твій прогрес у вивченні становить:</h3>
-
-   <div class="d-flex justify-content-center align-items-center mt-4">
-    <img src="https://s3u.tmimgcdn.com/u37752224/fb5ccfc3ac019ce87235c7881c6f4bdb.gif"
-         alt="Fire Icon"
-         class="fire-icon me-2" />
-    <span id="fire-count" class="fire-count">10</span>
+<div class="container mt-5">
+    <h1>Вхід в особистий кабінет</h1>
+    <form method="post">
+        {% if messages %}
+        {% for mess in messages %}
+        <div class="alert alert-success"> {{ mess }}</div>
+        {% endfor %}
+        {% endif %}
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-outline-warning">Увійти</button>
+    </form>
 </div>
-
-<style>
-    .fire-icon {
-        width: 120px;
-        height: 80px;
-        cursor: pointer;
-        transition: transform 0.2s ease, filter 0.2s ease;
-    }
-
-    .fire-icon:hover {
-        transform: scale(1.5);
-        filter: drop-shadow(0 0 10px orange);
-    }
-
-    .fire-count {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: #ff4500;
-    }
-</style>
-</div>
-<br>
-<h3 class="mt-4">Продовжуй проходити уроки для збільшення вогню!</h3>
 {% endblock %}

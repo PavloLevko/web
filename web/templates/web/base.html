@@ -68,7 +68,7 @@
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline mx-2 custom-btn" href="{% url 'user' %}">Кабінет</a>
+                        <a class="nav-link btn btn-outline mx-2 custom-btn" href="{% url 'cabinet' %}">Кабінет</a>
 
                         <style>
                             .custom-btn {
@@ -136,7 +136,49 @@
 
 <!-- Футер -->
 <footer>
-    <div class="container text-center">
+
+    <div class="container mt-5">
+
+    <div class="row">
+        <!-- Перша стаття -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src=https://sparsim.org/wp-content/uploads/2021/08/iStock-936994928-1536x1023.jpg" class="card-img-top" alt="Зображення статті">
+                <div class="card-body">
+                    <h5 class="card-title">Як швидко зібрати дані з сайту за допомогою Scrapy</h5>
+                    <p class="card-text">Web scraping або парсинг залишається потужним інструментом для збору даних із сайтів.</p>
+                    <a href="https://dou.ua/forums/topic/51069/" class="btn btn-primary" target="_blank">Читати більше</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Друга стаття -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="https://foxminded.ua/wp-content/uploads/2024/10/razrabotka-mikroservisov-na-python.webp" class="card-img-top" alt="Зображення статті">
+                <div class="card-body">
+                    <h5 class="card-title">Як (не) варто налаштовувати логування в Python</h5>
+                    <p class="card-text">У цій статті Software Engineer розповідає про роботу модуля logging в Python, а також розглядає ключові компоненти, які слід інтегрувати в логи.</p>
+                    <a href="https://dou.ua/forums/topic/48126/" class="btn btn-primary" target="_blank">Читати більше</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Третя стаття -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="https://lemon.school/storage/2023/07/oop-1.webp" class="card-img-top" alt="Зображення статті">
+                <div class="card-body">
+                    <h5 class="card-title">Чому SOLID — важлива складова мислення програміста. Розбираємося на прикладах з кодом</h5>
+                    <p class="card-text">На конкретних прикладах розглядаємо принципи SOLID.</p>
+                    <a href="https://dou.ua/lenta/articles/solid-principles/" class="btn btn-primary" target="_blank">Читати більше</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="container text-center mt-5">
         <p>&copy; 2024 ProgLab. Усі права захищені.</p>
     </div>
 </footer>
